@@ -1,0 +1,66 @@
+version: "3.9"
+
+services:
+  db-service:
+    build:
+      context: ./db-service
+    working_dir: /app
+    command: ["go", "run", "./main.go"]
+    volumes:
+      - ./db-service:/app
+    ports:
+      - "8083:8083"
+    environment:
+      - PORT=8083
+      - DB_SNAPSHOT_PATH=/app/data/urls.json
+
+  url-service:
+    build:
+      context: ./url-service
+    working_dir: /app
+    command: ["go", "run", "./main.go"]
+    volumes:
+      - ./url-service:/app
+    ports:
+      - "8081:8081"
+    environment:
+      - PORT=8081
+      - DB_SERVICE_URL=http://db-service:8083
+      - PUBLIC_BASE_URL=http://localhost:8080
+    depends_on:
+      - db-service
+
+  redirect-service:
+    build:
+      context: ./redirect-service
+    working_dir: /app
+    command: ["go", "run", "./main.go"]
+    volumes:
+      - ./redirect-service:/app
+    ports:
+      - "8082:8082"
+    environment:
+      - PORT=8082
+      - DB_SERVICE_URL=http://db-service:8083
+    depends_on:
+      - db-service
+
+  api-gateway:
+    build:
+      context: ./api-gateway
+    working_dir: /app
+    command: ["go", "run", "./main.go"]
+    volumes:
+      - ./api-gateway:/app
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - URL_SERVICE_URL=http://url-service:8081
+      - REDIRECT_SERVICE_URL=http://redirect-service:8082
+      - RATE_LIMIT_PER_MIN=120
+      - API_KEY=local-dev-key
+    depends_on:
+      - url-service
+      - redirect-service
+

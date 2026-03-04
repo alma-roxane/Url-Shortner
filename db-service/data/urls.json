@@ -1,0 +1,25 @@
+{
+  "records": [
+    {
+      "code": "XfO3wgp",
+      "longUrl": "https://example.com/docs",
+      "createdAt": "2026-03-04T17:42:03.365962219Z",
+      "expiresAt": "2026-04-03T17:42:03.365962219Z",
+      "visits": 2
+    },
+    {
+      "code": "google",
+      "longUrl": "https://www.google.com/?zx=1772647138629\u0026no_sw_cr=1",
+      "createdAt": "2026-03-04T17:59:16.048737197Z",
+      "expiresAt": "2026-04-03T17:59:16.048737197Z",
+      "visits": 1
+    },
+    {
+      "code": "sjec",
+      "longUrl": "https://sjec.ac.in/",
+      "createdAt": "2026-03-04T17:59:47.185354422Z",
+      "expiresAt": "2026-04-03T17:59:47.185354422Z",
+      "visits": 1
+    }
+  ]
+}

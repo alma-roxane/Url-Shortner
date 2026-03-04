@@ -1,11 +1,23 @@
 package models
 
-type URLRequest struct {
-	LongURL string `json:"long_url"`
-
+type ShortenRequest struct {
+	LongURL    string `json:"longUrl"`
+	CustomCode string `json:"customCode,omitempty"`
+	TTLDays    int    `json:"ttlDays,omitempty"`
 }
 
-type URLResponse struct {
-	ShortCode string `json:"short_code"`
-	ShortURL string `json:"short_url"`
+type ShortenResponse struct {
+	Code      string `json:"code"`
+	ShortURL  string `json:"shortUrl"`
+	LongURL   string `json:"longUrl"`
+	CreatedAt string `json:"createdAt"`
+	ExpiresAt string `json:"expiresAt,omitempty"`
+}
+
+type DBURLRecord struct {
+	Code      string  `json:"code"`
+	LongURL   string  `json:"longUrl"`
+	CreatedAt string  `json:"createdAt"`
+	ExpiresAt *string `json:"expiresAt,omitempty"`
+	Visits    int64   `json:"visits"`
 }

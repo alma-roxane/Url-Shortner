@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkForge | URL Shortener</title>
+  <link rel="stylesheet" href="/app/styles.css">
+</head>
+<body>
+  <main class="page">
+    <section class="hero-card">
+      <p class="eyebrow">Microservice URL Platform</p>
+      <h1>Turn long links into clean, shareable short URLs.</h1>
+      <p class="subtext">Paste your long URL, set optional expiry/custom code, and create a short link instantly.</p>
+
+      <form id="shorten-form" class="form-grid">
+        <label>
+          Long URL
+          <input id="longUrl" name="longUrl" type="url" placeholder="https://example.com/very/long/path" required>
+        </label>
+
+        <div class="row-2">
+          <label>
+            Custom Code (optional)
+            <input id="customCode" name="customCode" type="text" placeholder="launch2026">
+          </label>
+          <label>
+            Expiry (days)
+            <input id="ttlDays" name="ttlDays" type="number" min="0" max="3650" placeholder="30">
+          </label>
+        </div>
+
+        <label>
+          API Key
+          <input id="apiKey" name="apiKey" type="password" value="local-dev-key">
+        </label>
+
+        <button type="submit" id="submitBtn">Create Short URL</button>
+      </form>
+
+      <section id="result" class="result hidden" aria-live="polite">
+        <h2>Result</h2>
+        <p><span>Short URL</span><a id="shortUrl" href="#" target="_blank" rel="noopener"></a></p>
+        <p><span>Code</span><code id="shortCode"></code></p>
+        <p><span>Original URL</span><a id="longUrlOut" href="#" target="_blank" rel="noopener"></a></p>
+        <div class="actions">
+          <button id="copyBtn" type="button">Copy Short URL</button>
+          <span id="copyState"></span>
+        </div>
+      </section>
+
+      <section id="error" class="error hidden" aria-live="polite"></section>
+    </section>
+  </main>
+
+  <script src="/app/app.js"></script>
+</body>
+</html>

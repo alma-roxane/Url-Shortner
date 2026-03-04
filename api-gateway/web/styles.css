@@ -1,0 +1,183 @@
+:root {
+  --ink: #172032;
+  --muted: #59647a;
+  --surface: rgba(255, 255, 255, 0.82);
+  --accent: #0d9488;
+  --accent-2: #0f766e;
+  --danger: #b42318;
+  --ring: rgba(13, 148, 136, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 10% 20%, rgba(15, 118, 110, 0.25), transparent 45%),
+    radial-gradient(circle at 80% 5%, rgba(56, 189, 248, 0.2), transparent 40%),
+    linear-gradient(145deg, #f6f9ff 0%, #e9f7f5 100%);
+}
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.hero-card {
+  width: min(760px, 100%);
+  border-radius: 24px;
+  padding: 28px;
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 25px 70px rgba(23, 32, 50, 0.14);
+  animation: float-in 420ms ease-out;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  color: var(--accent-2);
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 2.6vw, 2.6rem);
+  line-height: 1.1;
+}
+
+.subtext {
+  margin-top: 12px;
+  color: var(--muted);
+}
+
+.form-grid {
+  margin-top: 22px;
+  display: grid;
+  gap: 14px;
+}
+
+.row-2 {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1fr;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  font-size: 0.92rem;
+}
+
+input {
+  border: 1px solid #d7dfed;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--ring);
+}
+
+button {
+  border: 0;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#submitBtn {
+  background: linear-gradient(135deg, var(--accent), #14b8a6);
+  color: #fff;
+}
+
+.result,
+.error {
+  margin-top: 18px;
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.result {
+  background: #f2fbf9;
+  border: 1px solid #b7efe4;
+}
+
+.result h2 {
+  margin: 0 0 8px;
+}
+
+.result p {
+  margin: 7px 0;
+  display: grid;
+  gap: 6px;
+}
+
+.result span {
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.actions {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#copyBtn {
+  background: #0f766e;
+  color: #fff;
+}
+
+#copyState {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.error {
+  background: #fff3f2;
+  border: 1px solid #ffd2cf;
+  color: var(--danger);
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes float-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 700px) {
+  .hero-card {
+    padding: 22px;
+  }
+
+  .row-2 {
+    grid-template-columns: 1fr;
+  }
+}
