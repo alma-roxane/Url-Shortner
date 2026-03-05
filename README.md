@@ -1,5 +1,8 @@
 # Scalable URL Shortener (Microservices)
 
+This project is a simple URL shortener built with Go using a microservices architecture. It allows users to create short URLs from long links and redirect users to the original address using the generated code. The system is split into multiple services that handle URL creation, redirection, and data storage, with an API gateway acting as the main entry point.
+
+
 ## Services
 - `api-gateway` (public entry):
   - `POST /api/v1/urls`
